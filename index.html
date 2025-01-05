@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <script defer src="assets/js/app.js"></script>
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="shortcut icon" href="assets/images/logo.png" type="image/x-icon">
+        <title>CryptoWatch</title>
+    </head>
+    <body>
+        <nav class="navbar border-bottom border-body">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="">
+                  <img src="assets/images/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top rounded-circle">
+                  CryptoWatch
+                </a>
+            </div>
+        </nav>
+
+        <main>
+            <div id="tabsContainer">
+                <div id="tabsDiv">
+                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="pills-coins-tab" data-bs-toggle="pill" data-bs-target="#pills-coins" type="button" role="tab" aria-controls="pills-coins" aria-selected="true">Home</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-reports-tab" data-bs-toggle="pill" data-bs-target="#pills-reports" type="button" role="tab" aria-controls="pills-reports" aria-selected="false">Live Reports</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-about-tab" data-bs-toggle="pill" data-bs-target="#pills-about" type="button" role="tab" aria-controls="pills-about" aria-selected="false">About</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="allSelectedCoins">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="showSelectedCoins">
+                        <label class="form-check-label" for="showSelectedCoins">Show all coins that are selected</label>
+                    </div>
+                </div>
+        
+                <div class="input-group" id="inputSearch">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search..." aria-label="Example text with button addon" aria-describedby="button-search">
+                    <button class="btn btn-success" type="button" id="button-search">Search</button>
+                </div>
+            </div>
+    
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-coins" role="tabpanel" aria-labelledby="pills-coins-tab" tabindex="0">             
+                    <div id="errorMessageCoins" class="modal" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Problem has occurred</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div id="modalBody" class="modal-body">
+                                    <p id="errorMessageText"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cardsContainer">
+    
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-reports" role="tabpanel" aria-labelledby="pills-reports-tab" tabindex="0">
+                    <div id="errorMessageReports">
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>Warning!</strong> You have no coins in the report list.
+                        </div>
+                    </div>
+                    <canvas id="liveChart" width="600" height="400"></canvas>
+                </div>
+                <div class="tab-pane fade" id="pills-about" role="tabpanel" aria-labelledby="pills-about-tab" tabindex="0">
+                
+                    <div class="container my-5">
+                        <div class="row">
+                            <div class="col-md-4 text-center mb-4">
+                                <img src="assets/images/pic.jpg" alt="Your Photo" class="img-fluid rounded-circle mb-3" />
+                                <h3 class="h4">Shai Heyman</h3>
+                                <p class="text-muted">Full-Stack Developer</p>
+                            </div>
+                    
+                            <div class="col-md-8">
+                                <h2 class="mb-4">About Me & CryptoWatch</h2>
+                                <p class="lead">
+                                    Hello, I'm Shai Heyman, a web developer with a passion for cryptocurrency and real-time web applications. 
+                                    I specialize in building interactive, data-driven websites using <strong>HTML</strong>, <strong>CSS</strong>, <strong>JavaScript</strong>, and <strong>Bootstrap</strong>. 
+                                    Lately, my focus has been on combining my love for technology and crypto by developing an exciting tool called <strong>CryptoWatch</strong>.
+                                </p>
+                    
+                                <h4 class="mt-4">What is CryptoWatch?</h4>
+                                <p>
+                                    <strong>CryptoWatch</strong> is a real-time cryptocurrency tracking web application. The goal of this project is to help users easily monitor the prices of various cryptocurrencies. By using trusted data sources like CoinGecko and CryptoCompare, CryptoWatch allows you to search for cryptocurrencies, view their latest prices, and generate custom reports to track your selected coins over time.
+                                </p>
+                                <p>
+                                    The app allows users to:
+                                </p>
+                                <ul>
+                                    <li><strong>Search for cryptocurrencies</strong> by symbol.</li>
+                                    <li><strong>Track up to 5 coins</strong> in real-time with live pricing data.</li>
+                                    <li><strong>View interactive reports</strong> with detailed price history for selected cryptocurrencies.</li>
+                                    <li><strong>Customize your experience</strong> by adding or removing coins with simple toggle switches.</li>
+                                </ul>
+                    
+                                <h5 class="mt-4">Technologies Used in CryptoWatch</h5>
+                                <p>
+                                    <strong>CryptoWatch</strong> is built using modern web technologies to provide a seamless, responsive experience. Key technologies include:
+                                </p>
+                                <ul>
+                                    <li><strong>HTML & CSS</strong>: Structuring and styling the app for responsiveness and accessibility.</li>
+                                    <li><strong>JavaScript (ES6+)</strong>: For dynamic functionality like fetching live data and rendering charts.</li>
+                                    <li><strong>Bootstrap</strong>: For mobile-first, responsive design that works across devices.</li>
+                                    <li><strong>Chart.js</strong>: For visualizing cryptocurrency price trends and reports.</li>
+                                    <li><strong>APIs (CoinGecko, CryptoCompare)</strong>: Fetching real-time cryptocurrency data for accurate and up-to-date information.</li>
+                                </ul>
+                    
+                                <h5 class="mt-4">Skills & Competencies</h5>
+                                <ul class="list-unstyled">
+                                    <li><i class="bi bi-check-circle text-primary"></i> HTML & CSS</li>
+                                    <li><i class="bi bi-check-circle text-primary"></i> JavaScript (Vanilla & ES6+)</li>
+                                    <li><i class="bi bi-check-circle text-primary"></i> Bootstrap & Responsive Design</li>
+                                    <li><i class="bi bi-check-circle text-primary"></i> APIs Integration & Real-Time Data</li>
+                                    <li><i class="bi bi-check-circle text-primary"></i> Chart.js (for data visualization)</li>
+                                    <li><i class="bi bi-check-circle text-primary"></i> Git & Version Control</li>
+                                </ul>
+                    
+                                <blockquote class="blockquote mt-4">
+                                    <p>"Life is this, I like this." - Harvey Specter</p>
+                                </blockquote>
+                    
+                                <h5 class="mt-4">Get In Touch</h5>
+                                <div class="d-flex justify-content-start mt-3">
+                                    <a href="https://github.com/ShaiHey" class="btn btn-outline-dark btn-sm me-3" target="_blank">
+                                        <i class="bi bi-github"></i> GitHub
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/shai-heyman-b32245330/" class="btn btn-outline-primary btn-sm" target="_blank">
+                                        <i class="bi bi-linkedin"></i> LinkedIn
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

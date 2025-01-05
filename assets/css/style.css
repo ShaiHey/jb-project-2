@@ -1,0 +1,92 @@
+main {
+    padding: 20px;
+    margin: 0;
+}
+
+#tabsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    margin: 0px 100px 0px 100px;
+}
+
+.input-group {
+    display: flex;
+    justify-content: flex-end;
+    max-width: 300px;
+}   
+
+.input-group input {
+    min-width: 200px; 
+}
+
+.input-group button {
+    min-width: 100px;
+}
+
+.nav-pills {
+    width: 123%;
+}
+
+#cardsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 0px 100px 0px 100px;
+}
+
+.card {
+    width: calc(33.333%);
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.card-body > .form-check {
+    position: absolute;
+    top: 10px;
+    right: 1px;
+}
+
+@media (max-width: 768px) {
+    #cardsContainer {
+        grid-template-columns: 1fr 1fr;
+        margin: 15px 0px 0px 0px;
+    }
+
+    #tabsContainer {
+        margin: 0px;
+    }
+
+    #allSelectedCoins {
+        margin-bottom: 15px;
+    }
+
+    .input-group {
+        width: 100%;
+    }
+
+    .card {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    #cardsContainer {
+        grid-template-columns: 1fr;
+        margin: 15px 0px 0px 0px;
+    }
+
+    #tabsContainer {
+        margin: 0px;
+    }
+
+    #allSelectedCoins {
+        margin-bottom: 15px;
+    }
+
+    .card {
+        width: 100%;
+    }
+}
